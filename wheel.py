@@ -53,7 +53,8 @@ class Tab:
         else:
             self.selected = False
 
-possibilities = ["900",	"940", "993", "1080", "1109", "1114"]
+possibilities = [890, 900, 940, 993, 1047, 1080, 1109, 1114, 1116, 1133, 1139, 1141]
+possibilities = [str(possibility) for possibility in possibilities]
 
 tabs = [Tab(random.choice(possibilities), RED, 300, 500, 200, 100)]
 for i in range(6):
@@ -92,7 +93,8 @@ while running:
     pygame.draw.polygon(screen, GREEN, ((295, 300), (200, 220), (200, 380)))
     if speed == 0:
         pygame.draw.polygon(screen, GREEN, ((505, 300), (600, 220), (600, 380)))
-    speed *= 0.994
+    if min(abs(tabs[-1].y), tabs[-1].y+100) > 10:
+        speed *= 0.995
     if speed < 0.1:
         speed = 0
     pygame.display.flip()       
